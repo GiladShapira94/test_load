@@ -1,0 +1,30 @@
+kind: project
+metadata:
+  name: clone-test-shapira
+spec:
+  functions:
+  - url: ./fetch_data.py
+    name: fetch_data
+    kind: job
+    image: mlrun/mlrun
+    handler: fetch_data
+  - url: ./trainier.py
+    name: trainer
+    kind: job
+    image: mlrun/mlrun
+    handler: train
+  - url: ./serving.yaml
+    name: serving
+  workflows: []
+  artifacts:
+  - kind: dataset
+    metadata:
+      project: clone-test-shapira
+      key: cancer-dataset
+    spec:
+      format: csv
+    status:
+      state: created
+  artifact_path: s3://testbucket-igz-temp/
+  source: ''
+  desired_state: online
