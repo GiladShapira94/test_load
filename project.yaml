@@ -10,6 +10,7 @@ spec:
     handler: fetch_data
     requirements:
     - pickle5
+    with_repo: true
   - url: ./trainier.py
     name: trainer
     kind: job
