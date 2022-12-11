@@ -8,7 +8,8 @@ spec:
     kind: job
     image: mlrun/mlrun
     handler: fetch_data
-    requirements : pickle5
+    requirements:
+    - pickle5
   - url: ./trainier.py
     name: trainer
     kind: job
