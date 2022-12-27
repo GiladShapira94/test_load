@@ -15,15 +15,15 @@ def init_functions(functions: dict, project=None, secrets=None):
 def kfpipeline():
 
     # Fetch the data
-    ingest = funcs['fetch_data'].as_step(
-        inputs={'dataset': 's3://testbucket-igz-temp/cancer-dataset.csv'},
+    ingest = funcs['fetch-data'].as_step(
+        inputs={'dataset': '/User/clone/cancer-dataset.csv'},
         outputs=['dataset','return'])
     
-    ingest_1 = funcs['fetch_data'].as_step(
+    ingest_1 = funcs['fetch-data'].as_step(
         inputs={'dataset': ingest.outputs['dataset']},
         outputs=['dataset'])
     
-    ingest_2 = funcs['fetch_data'].as_step(
+    ingest_2 = funcs['fetch-data'].as_step(
         inputs={'dataset': ingest_1.outputs['dataset']},
         outputs=['dataset'])
 
